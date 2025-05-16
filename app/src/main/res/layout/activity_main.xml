@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_5"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="362dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="168dp"
-        android:fontFamily="@font/anta"
-        android:text="WELCOME TO HISTROY FLASH-YOUR FUN AND EASY WAY TO MASTER HISTORY! Dive into bite-sized flashcards covering key events and dates ,then test your knowledge with quick quizzes to track your progress and score points .Perfect for students and histroy lovers alike this app helps you learn anytime,anywhere."
-        android:textSize="16sp"
+        android:layout_width="406dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/goblin_one"
+        android:text="WELCOME TO THE HISTROY FALSH-YOUR FUN AND EASY WAY TO MASTER HISTORY!"
+        android:textColor="#4A4013"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +26,27 @@
         android:id="@+id/buttonStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="264dp"
-        android:text="Start Quizze"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="64dp"
+        android:text="Start Quiz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="395dp"
+        android:layout_height="235dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/img_6"
+        android:fontFamily="@font/damion"
+        android:text="DIVE INTO BITE-SIZED FLASHCARDS COVERING KEY EVENTS,THEN TEST YOUR KNOWLWDGE WITH QUICK QUIZZES TO TRACK YOUR PROGRESS AND SCORE POINTS .PERCET FOR STUDENTS AND HISTROY LOVERS ,THIS APP HELPS YOU LEARN ANYTIME ,ANYWHERE"
+        android:textColor="#55451F"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

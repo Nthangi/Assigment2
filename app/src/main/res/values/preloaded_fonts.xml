@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
         <item>@font/agbalumo</item>
         <item>@font/anta</item>
         <item>@font/arbutus</item>
+        <item>@font/berkshire_swash</item>
+        <item>@font/bevan_italic</item>
+        <item>@font/black_and_white_picture</item>
+        <item>@font/charmonman</item>
+        <item>@font/cherry_swash_bold</item>
+        <item>@font/damion</item>
+        <item>@font/goblin_one</item>
     </array>
 </resources>

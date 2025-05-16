@@ -10,20 +10,28 @@ import androidx.core.content.ContextCompat
 class Question : AppCompatActivity() {
 
     private val questions = arrayOf(
-        "Nelson Mandela became South Africa's first democratically elected president in 1994.",
-        "Apartheid was officially implemented in South Africa in 1948.",
-        "The Sharpeville Massacre occurred during a protest against education policies.",
-        "The 1976 Soweto Uprising began as a protest against Afrikaans being used in schools.",
+        "The Haitian Revolution (1791–1804) was the only successful slave revolt that led to an independent nation.",
+        "The ancient city of Timbuktu (in modern Mali) was a major center of Islamic scholarship and trade in the 15th century.",
+        "The term \"Iron Curtain\" was coined during the American Civil War.",
         "The Truth and Reconciliation Commission was chaired by F.W. de Klerk.",
         "The Great Trek was a migration of British settlers into South Africa.",
         "Cecil Rhodes founded De Beers diamonds and expanded British control in South Africa.",
         "The Union of South Africa in 1910 granted equal voting rights to all races.",
-        "The Marikana Massacre happened during apartheid."
+        "South Africa is the only country in the world to have voluntarily dismantled its nuclear weapons program",
+        "The Anglo-Boer War (1899–1902) was fought between the British and the Zulu Kingdom.",
+        "Australia was colonized by the British as a penal colony in the 18th century"
+
     )
-    private val answers = booleanArrayOf(true, true, false, true, false, false, true, false, false)
+
+    private val correctAnswers = booleanArrayOf(
+        true, true, false, true, false,
+        false, true, false, false, true
+    )
 
     private var currentQuestionIndex = 0
     private var score = 0
+    private val userAnswers = BooleanArray(10) { false }
+    private val wrongQuestions = ArrayList<Int>()
 
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
@@ -35,12 +43,21 @@ class Question : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
+        initializeViews()
+        setupButtonListeners()
+        displayQuestion()
+        disableNextButton()
+    }
+
+    private fun initializeViews() {
         trueButton = findViewById(R.id.trueButton)
         falseButton = findViewById(R.id.falseButton)
         nextButton = findViewById(R.id.nextButton)
         feedbackText = findViewById(R.id.feedbackText)
         questionText = findViewById(R.id.questionText)
+    }
 
+    private fun setupButtonListeners() {
         trueButton.setOnClickListener {
             checkAnswer(true)
             enableNextButton()
@@ -58,12 +75,10 @@ class Question : AppCompatActivity() {
                 feedbackText.text = ""
                 disableNextButton()
             } else {
+                calculateWrongQuestions()
                 navigateToScoreScreen()
             }
         }
-
-        displayQuestion()
-        disableNextButton()
     }
 
     private fun displayQuestion() {
@@ -71,14 +86,35 @@ class Question : AppCompatActivity() {
     }
 
     private fun checkAnswer(userAnswer: Boolean) {
-        if (userAnswer == answers[currentQuestionIndex]) {
+        userAnswers[currentQuestionIndex] = userAnswer
+        if (userAnswer == correctAnswers[currentQuestionIndex]) {
             score++
-            feedbackText.text = "Correct!"
+            feedbackText.text = "You Nailed it!"
             feedbackText.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
         } else {
-            feedbackText.text = "Incorrect"
+            feedbackText.text = "Oops! Try Again"
             feedbackText.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))
         }
+    }
+
+    private fun calculateWrongQuestions() {
+        wrongQuestions.clear()
+        userAnswers.forEachIndexed { index, answer ->
+            if (answer != correctAnswers[index]) {
+                wrongQuestions.add(index)
+            }
+        }
+    }
+
+    private fun navigateToScoreScreen() {
+        Intent(this, ScoreActivity::class.java).apply {
+            putExtra("SCORE", score)
+            putExtra("TOTAL_QUESTIONS", questions.size)
+            putIntegerArrayListExtra("WRONG_QUESTIONS", wrongQuestions)
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(this)
+        }
+        finish()
     }
 
     private fun enableNextButton() {
@@ -89,15 +125,5 @@ class Question : AppCompatActivity() {
     private fun disableNextButton() {
         nextButton.isEnabled = false
         nextButton.alpha = 0.5f
-    }
-
-    private fun navigateToScoreScreen() {
-        val intent = Intent(this, ScoreActivity::class.java).apply {
-            putExtra("SCORE", score)
-            putExtra("TOTAL_QUESTIONS", questions.size)
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        startActivity(intent)
-        finish()
     }
 }

@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_1"
     tools:context=".Question">
 
     <TextView
         android:id="@+id/questionText"
-        android:layout_width="337dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="136dp"
-        android:text="questions will appear "
+        android:layout_width="352dp"
+        android:layout_height="194dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/charmonman"
+        android:text="Questions will appear "
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,9 +25,13 @@
         android:id="@+id/trueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="340dp"
         android:text="True"
+        android:textColor="@color/white"
+        android:textColorHighlight="#FFB300"
+        android:textColorHint="#00ACC1"
+        android:textColorLink="#FDD835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,8 +39,8 @@
         android:id="@+id/falseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="340dp"
         android:text="False"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,19 +49,23 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="460dp"
         android:text="Next Question"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/feedbackText"
-        android:layout_width="143dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="168dp"
+        android:layout_width="376dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="116dp"
+        android:fontFamily="@font/arbutus"
         android:text="FEEDBACK"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nextButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
